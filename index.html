@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wellum</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: rgb(44, 44, 44);
+          color: rgb(238, 233, 233);
+      }
+
+      /* NAVCSS */
+      #mainDiv {
+          display: flex;
+          flex-direction: row;
+          padding: 20px;
+          text-align: center;
+          color: rgb(183, 176, 176);
+          font-weight: 700;
+          justify-content: space-between;
+          align-items: center;
+      }
+
+      .bi {
+          font-size: 20px;
+      }
+
+      .noiDungNavBar {
+          border-radius: 5px;
+          padding: 5px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+      }
+
+      .noiDungNavBar a, .noiDungNavBar button {
+          background-color: rgb(44, 44, 44);
+          border: none;
+          color: rgb(203, 197, 197);
+          font-weight: 700;
+          text-decoration: none;
+          cursor: pointer;
+      }
+      
+
+      .divIcon {
+          padding-left: 20px;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 12px;
+      }
+
+      .divContent {
+          display: flex;
+          flex-direction: row;
+          gap: 18px;
+          flex-wrap: wrap;
+          align-items: center;
+      }
+
+      #navbar {
+          border-radius: 10px;
+      }
+
+      /* Simple search form style */
+      #searchForm input[type="search"] {
+          background-color: rgb(44, 44, 44);
+          border: 1px solid #666;
+          color: #ddd;
+          border-radius: 6px;
+          padding: 6px 10px;
+      }
+
+      /* BANNER */
+     .banner {
+    margin-bottom: 40px; /* Hoặc giá trị bạn muốn */
+       margin-top: 40px;
+    background-color: #5c81d7;
+    border-radius: 10px;
+    height: 200px;
+    text-align: center;
+}
+
+      #bannerDiv {
+          width: 100%;
+          height: 10%;
+      }
+
+      #bannerDiv img {
+          width: 100%;
+          height: 200px;
+          border-radius: 5px;
+          object-fit: cover;
+      }
+
+      /* CONTENT */
+      .content {
+          width: 100%;
+          height: 100%;
+          padding: 10px;
+          text-align: center;
+        
+      }
+      .content a{
+        text-decoration: none;
+      }
+
+      .realTitle {
+          font-weight: 800;
+          font-size: 18px;
+          text-decoration: none;
+          line-height: 1.55;
+          color: rgb(238, 233, 233);
+      }
+
+      .title {
+          padding-bottom: 10px;
+      }
+
+      .pic img {
+          width: 100%;
+          height: 100%;
+          border-radius: 10px;
+          object-fit: cover;
+      }
+
+      #mainContent {
+          background-color: rgb(74, 74, 74);
+          height: 56vh;
+      }
+
+      .pic {
+          width: 100%;
+          border-radius: 5px;
+          border: none;
+          height: 200px;
+      }
+
+      #divTextContent {
+          padding: 10px;
+      }
+
+      .title {
+          padding-top: 10px;
+          height: 5px;
+      }
+
+      #divContent {
+          display: flex;
+          flex-direction: row;
+          gap: 16px;
+      }
+
+      /* CONTENTPLUS */
+      #mainContentPlus {
+          display: flex;
+          gap: 24px;
+          padding-top: 30px;
+        margin-bottom: 30px; /* Hoặc giá trị bạn muốn */
+       margin-top: 30px;
+      }
+
+      /* Cột bài viết trái */
+      #contentOne {
+          flex: 1;
+          height: 100vh;
+          overflow-y: auto;
+          padding-right: 8px;
+      }
+
+      #contentOne::-webkit-scrollbar {
+          width: 8px;
+      }
+
+      #contentOne::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.06);
+          border-radius: 8px;
+      }
+
+      /* Mỗi item (card) */
+      .mainContentOne {
+          background: rgb(62, 62, 62);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          border-radius: 12px;
+          padding: 24px;
+          display: flex;
+          align-items: stretch;
+          gap: 20px;
+          height: auto;
+          margin: 0 10px 16px 10px;
+          box-shadow: 0 8px 20px -12px rgba(0, 0, 0, .6);
+          transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+      }
+
+      .mainContentOne:hover {
+          background: rgb(70, 70, 70);
+          transform: translateY(-3px);
+          box-shadow: 0 14px 32px -16px rgba(0, 0, 0, .75);
+      }
+
+      /* Ảnh/placeholder bên trái */
+      .contentOnePic {
+          flex: 0 0 200px;
+          height: 140px;
+          border-radius: 10px;
+          overflow: hidden;
+          background: linear-gradient(135deg, #666, #555);
+          display: grid;
+          place-items: center;
+          color: #ececec;
+          font-weight: 700;
+          letter-spacing: .3px;
+      }
+
+      .contentOnePic img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+      }
+
+      /* Phần chữ bên phải */
+      .contentOneTitle {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 8px;
+          overflow: hidden;
+      }
+
+      .titleOne {
+          font-weight: 800;
+          font-size: 20px;
+          line-height: 1.35;
+          color: rgb(238, 233, 233);
+      }
+
+      .tenBaiVietOne {
+          font-size: 16px;
+          color: rgb(203, 197, 197);
+          line-height: 1.5;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+      }
+
+      .infoTacGia {
+          font-size: 14px;
+          color: rgb(183, 176, 176);
+          opacity: .9;
+      }
+
+      #contentTwo {
+          width: 35%;
+          overflow: hidden;
+          background-color: rgb(44, 44, 44);
+      }
+
+      .newletterDiv {
+          padding: 20px;
+          background-color: #92b0f5;
+          border-radius: 8px;
+          margin: 10px;
+          color: #2c3e50;
+      }
+
+      .newletterDiv h2 {
+          font-size: 20px;
+          margin-bottom: 8px;
+      }
+
+      .newletterDiv h3 {
+          font-size: 15px;
+      }
+
+      .newletterDiv h4 {
+          font-size: 14px;
+      }
+
+      .newletterDiv input[type="email"],
+      .newletterDiv input[type="text"] {
+          width: 90%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 14px;
+          margin-bottom: 12px;
+      }
+
+      .newletterDiv button {
+          width: 50%;
+          margin: 0 auto;
+          padding: 12px;
+          background-color: #3c6cdd;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          font-size: 15px;
+          cursor: pointer;
+      }
+
+      .newletterDiv button:hover {
+          background-color: #2c5cd5;
+      }
+
+      #contentTwoBanner {
+          height: 40%;
+          font-size: 90px;
+          margin: 10px;
+          border-radius: 10px;
+          border: none;
+          text-align: center;
+          justify-content: center;
+          margin-top: 50px;
+          /* background-color: #f5b092; */
+      }
+
+      #contentTwoBanner img {
+          width: 100%;
+          height: 110%;
+          border-radius: 5px;
+          object-fit: cover;
+          
+      }
+
+      /* FOOTER */
+      #mainFooter {
+          padding-top: 70px;
+          padding-bottom: 50px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding-left: 30px;
+          padding-right: 30px;
+          color: rgb(183, 176, 176);
+      }
+
+      h4 {
+          height: 9px;
+      }
+
+      h3 {
+          height: 9px;
+      }
+
+      /* Link wrapper để toàn bộ card có thể click */
+      .cardLink {
+          display: contents; /* giữ layout flex của .mainContentOne */
+      }
+  </style>
+</head>
+
+<body>
+  <header id="navbar" role="banner">
+    <div id="mainDiv">
+      <!-- NAV LEFT -->
+      <nav class="divContent" aria-label="Chuyên mục">
+        <div class="noiDungNavBar"><a href="/category/quan-diem-tranh-luan">QUAN ĐIỂM - TRANH LUẬN</a></div>
+        <div class="noiDungNavBar"><a href="/category/khoa-hoc-cong-nghe">KHOA HỌC - CÔNG NGHỆ</a></div>
+        <div class="noiDungNavBar"><a href="/category/triet-hoc">TRIẾT HỌC</a></div>
+        <div class="noiDungNavBar"><a href="/category/kinh-te">KINH TẾ</a></div>
+        <div class="noiDungNavBar"><a href="/category/tam-ly-hoc">TÂM LÝ HỌC</a></div>
+        <div class="noiDungNavBar">
+          <a href="/articles/new" aria-label="Viết bài">✍️ VIẾT BÀI</a>
+        </div>
+      </nav>
+
+      <!-- NAV RIGHT (search + quick links) -->
+      <div class="divIcon">
+        <form id="searchForm" action="/search" method="get" role="search" aria-label="Tìm kiếm">
+          <label for="q" class="visually-hidden">Tìm kiếm</label>
+          <input type="search" id="q" name="q" placeholder="Tìm bài viết..." aria-label="Ô tìm kiếm">
+        </form>
+
+        <div class="noiDungNavBar">
+          <a href="/newsletter" title="Newsletter" aria-label="Newsletter">
+            <i class="bi bi-envelope" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <div class="noiDungNavBar">
+          <a href="/login" title="Đăng nhập" aria-label="Đăng nhập">
+            <i class="bi bi-person-circle" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner" aria-label="Banner">
+      <div id="bannerDiv">
+        <img src="Media/7d527980982e11f0b9538ffc36f64168.jpg" alt="Banner Wellum">
+      </div>
+    </section>
+
+    <section id="content" aria-labelledby="featuredTitle">
+      <div id="mainContent">
+        <div id="divTextContent">
+          <h2 id="featuredTitle" style="color: rgb(183, 176, 176);">
+            NỔI BẬT TRONG THÁNG | TOP 5 bài viết hay được bình chọn
+          </h2>
+        </div>
+
+        <!-- TOP 5 FEATURED -->
+        <div id="divContent" role="list">
+          <!-- Mỗi khối .content nên link đến bài viết chi tiết -->
+          <article class="content" role="listitem" data-article-id="1" data-slug="khong-self-help-thi-ai-help">
+            <a href="/articles/khong-self-help-thi-ai-help" aria-label="Không Self-help thì Ai help?">
+              <div class="pic">
+                <img src="Media/noibat1.jpg" alt="Không Self-help thì Ai help?">
+              </div>
+              <div class="title">
+                <div class="realTitle">Không Self-help thì Ai help?</div>
+              </div>
+            </a>
+          </article>
+
+          <article class="content" role="listitem" data-article-id="2" data-slug="aristotle-triet-hoc-la-thuc-hanh">
+            <a href="/articles/aristotle-triet-hoc-la-thuc-hanh" aria-label="ARISTOTLE - TRIẾT HỌC LÀ THỰC HÀNH">
+              <div class="pic">
+                <img src="Media/noibat2.jpg" alt="ARISTOTLE - TRIẾT HỌC LÀ THỰC HÀNH">
+              </div>
+              <div class="title">
+                <div class="realTitle">ARISTOTLE - TRIẾT HỌC LÀ THỰC HÀNH</div>
+              </div>
+            </a>
+          </article>
+
+          <article class="content" role="listitem" data-article-id="3" data-slug="nguoi-dan-ong-manh-me-nhat-the-gioi">
+            <a href="/articles/nguoi-dan-ong-manh-me-nhat-the-gioi" aria-label="1121 phút tìm hiểu về người đàn ông mạnh mẽ nhất thế giới">
+              <div class="pic">
+                <img src="Media/noibat3.jpg" alt="1121 phút về 'người đàn ông mạnh mẽ nhất thế giới'">
+              </div>
+              <div class="title">
+                <div class="realTitle">Mình học được gì sau 1121 phút tìm hiểu về “người đàn ông mạnh mẽ nhất thế giới”?</div>
+              </div>
+            </a>
+          </article>
+
+          <article class="content" role="listitem" data-article-id="4" data-slug="chinh-tri-vs-kinh-te-chu-nghia-trong-thuong">
+            <a href="/articles/chinh-tri-vs-kinh-te-chu-nghia-trong-thuong" aria-label="Chính trị vs Kinh tế: chủ nghĩa trọng thương">
+              <div class="pic">
+                <img src="Media/noibat4.jpg" alt="Chính trị vs Kinh tế: sức hấp dẫn của chủ nghĩa trọng thương">
+              </div>
+              <div class="title">
+                <div class="realTitle">Chính trị vs Kinh tế: Sức hấp dẫn bí ẩn của chủ nghĩa trọng thương</div>
+              </div>
+            </a>
+          </article>
+
+          <article class="content" role="listitem" data-article-id="5" data-slug="ban-ve-su-thua-cuoc-trong-cuoc-song">
+            <a href="/articles/ban-ve-su-thua-cuoc-trong-cuoc-song" aria-label="Bàn về sự thua cuộc trong cuộc sống">
+              <div class="pic">
+                <img src="Media/noibat5.jpg" alt="Bàn về sự thua cuộc trong cuộc sống">
+              </div>
+              <div class="title">
+                <div class="realTitle">Bàn về sự thua cuộc trong cuộc sống</div>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contentPlus" aria-label="Nội dung chính">
+      <div id="mainContentPlus">
+        <!-- LEFT COLUMN: ARTICLES LIST -->
+        <section id="contentOne" aria-labelledby="listTitle">
+          <h2 id="listTitle" class="visually-hidden">Danh sách bài viết</h2>
+
+          <!-- Lặp qua danh sách bài viết từ backend -->
+          <article class="mainContentOne" data-article-id="101" data-slug="qua-khu-hien-tai-va-tuong-lai">
+            <a class="cardLink" href="/articles/qua-khu-hien-tai-va-tuong-lai" aria-label="QUÁ KHỨ HIỆN TẠI VÀ TƯƠNG LAI">
+              <div class="contentOnePic">
+                <img src="Media/Baiviet1-QuáKhứHiệnTạiVàTươngLai.jpg" alt="QUÁ KHỨ HIỆN TẠI VÀ TƯƠNG LAI">
+              </div>
+              <div class="contentOneTitle">
+                <div class="titleOne">QUÁ KHỨ HIỆN TẠI VÀ TƯƠNG LAI</div>
+                <p class="tenBaiVietOne">Con người chúng ta quá chú ý tới tương lai và nhớ lại quá khứ nhưng ít ai...</p>
+                <div class="infoTacGia">THÁI HỌC</div>
+              </div>
+            </a>
+          </article>
+
+          <article class="mainContentOne" data-article-id="102" data-slug="khi-ly-tri-cham-den-vo-nga">
+            <a class="cardLink" href="/articles/khi-ly-tri-cham-den-vo-nga" aria-label="KHI LÝ TRÍ CHẠM ĐẾN VÔ NGÃ">
+              <div class="contentOnePic">
+                <img src="Media/Baiviet2-KhiLýTríChạmĐếnVôNgã.jpg" alt="KHI LÝ TRÍ CHẠM ĐẾN VÔ NGÃ">
+              </div>
+              <div class="contentOneTitle">
+                <div class="titleOne">KHI LÝ TRÍ CHẠM ĐẾN VÔ NGÃ</div>
+                <p class="tenBaiVietOne">Con người chú ta điều chú ý đến mọi thứ xung quanh nhưng có rất ít người dùng lí trí để làm việc đó....</p>
+                <div class="infoTacGia">THÁI HỌC</div>
+              </div>
+            </a>
+          </article>
+
+          <article class="mainContentOne" data-article-id="103" data-slug="su-that-ve-may-man">
+            <a class="cardLink" href="/articles/su-that-ve-may-man" aria-label="SỰ THẬT VỀ THỨ ĐƯỢC GỌI LÀ MAY MẮN">
+              <div class="contentOnePic">
+                <img src="Media/Baiviet3-SựThậtVềMaiMắn.jpg" alt="SỰ THẬT VỀ THỨ ĐƯỢC GỌI LÀ MAY MẮN">
+              </div>
+              <div class="contentOneTitle">
+                <div class="titleOne">SỰ THẬT VỀ THỨ ĐƯỢC GỌI LÀ MAI MẮN</div>
+                <p class="tenBaiVietOne">Ai trong chúng ta cũng mong chờ thứ được gọi là may mắn nhưng sẽ ra sao nếu ta không mong chờ việc đó...</p>
+                <div class="infoTacGia">THÁI HỌC</div>
+              </div>
+            </a>
+          </article>
+
+          <article class="mainContentOne" data-article-id="104" data-slug="viet-nam-nen-kinh-te-ven-bien">
+            <a class="cardLink" href="/articles/viet-nam-nen-kinh-te-ven-bien" aria-label="Việt Nam và đặc tính dễ tổn thương của nền kinh tế ven biển">
+              <div class="contentOnePic">
+                <img src="Media/Baiviet4-ViệtNamVàĐặcTínhDễTổnThươngCủa1NềnKinhTếVenBiển.jpg" alt="Việt Nam và nền kinh tế ven biển">
+              </div>
+              <div class="contentOneTitle">
+                <div class="titleOne">VIỆT NAM VÀ ĐẶC TÍNH DỄ TỔN THƯƠNG CỦA 1 NỀN KINH TẾ VEN BIỂN</div>
+                <p class="tenBaiVietOne">Việt Nam chúng ta là 1 quốc gia có nền kinh tế ven biển ổn định và dễ tổn thương tại sao...</p>
+                <div class="infoTacGia">THÁI HỌC</div>
+              </div>
+            </a>
+          </article>
+
+          <article class="mainContentOne" data-article-id="105" data-slug="aristotle-3-sai-lam-cua-nha-nuoc-cong-hoa-plato">
+            <a class="cardLink" href="/articles/aristotle-3-sai-lam-cua-nha-nuoc-cong-hoa-plato" aria-label="ARISTOTLE vạch trần 3 sai lầm của Plato">
+              <div class="contentOnePic">
+                <img src="Media/Baiviet5-AristotleĐãVạchTrần3SaiLầmChếtNgườiTrongNhàNướcCộngHoàCủaPlatoNhưThếNào.jpg" alt="Aristotle và 3 sai lầm của Plato">
+              </div>
+              <div class="contentOneTitle">
+                <div class="titleOne">ARISTOTLE ĐÃ VẠCH TRẦN 3 SAI LẦM CHẾT NGƯỜI TRONG NHÀ NƯỚC CỘNG HOÀ CỦA PLATO NHƯ THẾ NÀO?</div>
+                <p class="tenBaiVietOne">Triết gia Aristotle đã vạch trần được 3 sai lầm chết người của nhà nước cộng hoà của Plato bằng...</p>
+                <div class="infoTacGia">THÁI HỌC</div>
+              </div>
+            </a>
+          </article>
+
+          <article class="mainContentOne" data-article-id="106" data-slug="an-cu-lac-nghiep-hay-nguoc-lai">
+            <a class="cardLink" href="/articles/an-cu-lac-nghiep-hay-nguoc-lai" aria-label="AN CƯ LẠC NGHIỆP HAY LẠC NGHIỆP RỒI MỚI AN CƯ">
+              <div class="contentOnePic">
+                <img src="Media/Baiviet6-HomentorSeaon2Tập1AnCưLạcNghiệpHayLạcNghiệpRồiMớiAnCư.jpg" alt="An cư lạc nghiệp hay ngược lại">
+              </div>
+              <div class="contentOneTitle">
+                <div class="titleOne">AN CƯ LẠC NGHIỆP HAY LẠC NGHIỆP RỒI MỚI AN CƯ</div>
+                <p class="tenBaiVietOne">Nhiều người trong chúng ta có ý định an cư rồi lạc nghiệp nhưng 1 vài người lại có ý định ngược lại...</p>
+                <div class="infoTacGia">THÁI HỌC</div>
+              </div>
+            </a>
+          </article>
+
+          <article class="mainContentOne" data-article-id="107" data-slug="6-su-that-ve-xa-hoi-li-tuong-aristotle">
+            <a class="cardLink" href="/articles/6-su-that-ve-xa-hoi-li-tuong-aristotle" aria-label="6 sự thật về xã hội lí tưởng từ Aristotle">
+              <div class="contentOnePic">
+                <img src="Media/Baiviet7-6SựThậtGâySốcVêXãHộiLíTưởngTừTriếtGiaAristotle.jpg" alt="6 sự thật về xã hội lí tưởng - Aristotle">
+              </div>
+              <div class="contentOneTitle">
+                <div class="titleOne">6 SỰ THẬT GÂY SỐC VỀ XÃ HỘI LÍ TƯỞNG TỪ TRIẾT GIA ARISTOTLE</div>
+                <p class="tenBaiVietOne">Chúng ta hãy cùng tìm hiểu về 6 sự thật về xã hội lí tưởng từ triết gia Aristotle...</p>
+                <div class="infoTacGia">THÁI HỌC</div>
+              </div>
+            </a>
+          </article>
+
+          <article class="mainContentOne" data-article-id="108" data-slug="cach-dung-solver-trong-excel">
+            <a class="cardLink" href="/articles/cach-dung-solver-trong-excel" aria-label="CÁCH DÙNG SOLVER TRONG EXCEL">
+              <div class="contentOnePic">
+                <img src="Media/Baiviet8-CáchDùngSolverTrongExcel.jpg" alt="Cách dùng Solver trong Excel">
+              </div>
+              <div class="contentOneTitle">
+                <div class="titleOne">CÁCH DÙNG SOLVER TRONG EXCEL</div>
+                <p class="tenBaiVietOne">Một số lỗi thường gặp khi dùng Solver trong Excel và cách xử lý chi tiết...</p>
+                <div class="infoTacGia">THÁI HỌC</div>
+              </div>
+            </a>
+          </article>
+
+          <!-- /Lặp -->
+        </section>
+
+        <!-- RIGHT COLUMN: ASIDE -->
+        <aside id="contentTwo" aria-label="Đăng ký & Banner">
+          <div class="newletterDiv">
+            <h2>Đăng ký nhận newsletter hàng tuần của chúng tôi</h2>
+            <h3>Nội dung giới thiệu newsletter</h3>
+
+            <form id="newsletterForm" action="/newsletter/subscribe" method="post">
+              <!-- Backend: chèn CSRF ở đây nếu cần -->
+              <!-- <input type="hidden" name="csrfToken" value="${csrfToken}"> -->
+              <h4><label for="newsletterEmail">Nhập email của bạn</label></h4>
+              <input type="email" id="newsletterEmail" name="email" placeholder="email@domain.com" required>
+
+              <h4><label for="newsletterName">Chúng mình có thể gọi bạn là?</label></h4>
+              <input type="text" id="newsletterName" name="displayName" placeholder="Tên hiển thị" maxlength="64">
+
+              <button type="submit">ĐĂNG KÝ</button>
+            </form>
+          </div>
+
+        <div id="contentTwoBanner">
+          
+              <img src="Media/Screenshot 2025-10-03 151611.png" alt="Chiến dịch nổi bật">
+            
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div id="mainFooter">
+      <div id="footerName">
+        <h3>Công ty cổ phần HocNguyen</h3>
+        <h4>Trực thuộc Công ty Cổ Phần Wellum Việt Nam</h4>
+        <h4>Người chịu trách nhiệm nội dung: Nguyễn Thái Học</h4>
+      </div>
+
+      <address class="footerContact">
+        <h3>Liên hệ hợp tác</h3>
+        <h4>Email: <a href="mailto:ngthaihoc.vn@gmail.com">ngthaihoc.vn@gmail.com</a></h4>
+        <h4>Điện thoại: <a href="tel:0963672903">0963672903</a></h4>
+      </address>
+
+      <div id="footerCopyright">
+        <h3>© 2025 - Write by Welly Nguyen</h3>
+        <h4>Email: <a href="mailto:ngthaihoc.vn@gmail.com">ngthaihoc.vn@gmail.com</a></h4>
+        <h4>Điện thoại: <a href="tel:0963672903">0963672903</a></h4>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
