@@ -91,8 +91,8 @@ body {
 }
 
 #index-page .content {
-    width: 100%;
-    height: 100%;
+    flex: 1 1 18%;
+    min-width: 150px;
     padding: 10px;
     text-align: center;
 }
@@ -107,6 +107,7 @@ body {
     text-decoration: none;
     line-height: 1.55;
     color: rgb(238, 233, 233);
+    overflow-wrap: break-word;
 }
 
 #index-page .title {
@@ -145,8 +146,9 @@ body {
 
 #index-page #divContent {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     gap: 16px;
+    justify-content: center;
 }
 
 #index-page #mainContentPlus {
